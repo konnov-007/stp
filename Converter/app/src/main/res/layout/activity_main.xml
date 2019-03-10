@@ -18,9 +18,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputNumberLayout"
         android:layout_width="260dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
@@ -69,6 +71,7 @@
         android:id="@+id/spinnerResultNumber"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:entries="@array/number_system_list"
         app:layout_constraintLeft_toRightOf="@id/resultNumberLayout"
@@ -105,4 +108,29 @@
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="История операций:"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonConvert" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        tools:listitem="@layout/history_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

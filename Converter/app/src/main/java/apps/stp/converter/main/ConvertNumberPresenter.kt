@@ -1,5 +1,7 @@
 package apps.stp.converter.main
 
+import apps.stp.converter.data.HistoryItem
+
 class ConvertNumberPresenter : ConvertNumberContract.Presenter {
 
     private var mView: ConvertNumberContract.View? = null
@@ -12,11 +14,15 @@ class ConvertNumberPresenter : ConvertNumberContract.Presenter {
         mView = null
     }
 
-    override fun convertNumber(number: String, initialNumberSystem: Int, resultNumberSystem: Int) {
-        try {
-            mView?.getConvertedNumber(Integer.toString(Integer.parseInt(number, initialNumberSystem), resultNumberSystem))
-        } catch (exception: Exception) {
-            mView?.showErrorMessage()
-        }
+    override fun convertNumber(inputNumber: String, inputNumberSystem: String, resultNumberSystem: String) {
+        if (inputNumber.length <= 20) {
+            try {
+                val resultNumber = Integer.toString(Integer.parseInt(inputNumber, inputNumberSystem.toInt()), resultNumberSystem.toInt())
+                mView?.getConvertedNumber(resultNumber)
+                mView?.addNewAdapterItem(HistoryItem(inputNumber, resultNumber, inputNumberSystem, resultNumberSystem))
+            } catch (exception: Exception) {
+                mView?.showErrorMessage()
+            }
+        } else mView?.showErrorMessage()
     }
 }
