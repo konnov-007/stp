@@ -5,6 +5,7 @@ import apps.stp.converter.data.HistoryItem
 class ConvertNumberPresenter : ConvertNumberContract.Presenter {
 
     private var mView: ConvertNumberContract.View? = null
+    private val mConvertNumberModel = ConvertNumberModel()
 
     override fun takeView(view: ConvertNumberContract.View) {
         mView = view
@@ -17,7 +18,7 @@ class ConvertNumberPresenter : ConvertNumberContract.Presenter {
     override fun convertNumber(inputNumber: String, inputNumberSystem: String, resultNumberSystem: String) {
         if (inputNumber.length <= 20) {
             try {
-                val resultNumber = Integer.toString(Integer.parseInt(inputNumber, inputNumberSystem.toInt()), resultNumberSystem.toInt())
+                val resultNumber = mConvertNumberModel.convertNumber(inputNumber, inputNumberSystem, resultNumberSystem)
                 mView?.getConvertedNumber(resultNumber)
                 mView?.addNewAdapterItem(HistoryItem(inputNumber, resultNumber, inputNumberSystem, resultNumberSystem))
             } catch (exception: Exception) {
