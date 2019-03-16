@@ -1,7 +1,10 @@
 package apps.stp.converter.main
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -24,12 +27,12 @@ class ConvertNumberActivity : AppCompatActivity(), ConvertNumberContract.View {
     }
 
     override fun initUI() {
-        toolbar.title = "Конвертер"
+        toolbar.title = getString(R.string.app_name)
         toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         setSupportActionBar(toolbar)
 
         mConverterHistoryAdapter = ConverterHistoryAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(this@ConvertNumberActivity)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = mConverterHistoryAdapter
         recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
@@ -48,13 +51,33 @@ class ConvertNumberActivity : AppCompatActivity(), ConvertNumberContract.View {
 
     override fun getConvertedNumber(result: String) = editTextResultNumber.setText(result)
 
-    override fun openAboutDialog() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun addNewAdapterItem(item: HistoryItem) = mConverterHistoryAdapter.addItem(item)
 
-    override fun showErrorMessage() = toast("Ошибка! Введите корректные данные!")
+    override fun showAlertDialog(title: String, message: String) {
+        AlertDialog.Builder(this).apply {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(getString(R.string.dialog_button)) { _, _ -> }
+            show()
+        }
+    }
+
+    override fun showErrorMessage() = toast(getString(R.string.error_message))
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.actionAboutApp -> showAlertDialog(getString(R.string.dialog_about_app_title),
+                    getString(R.string.dialog_about_app_message))
+            R.id.actionAboutDevelopers -> showAlertDialog(getString(R.string.dialog_about_developers_title),
+                    getString(R.string.dialog_about_developers_message))
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onResume() {
         super.onResume()
