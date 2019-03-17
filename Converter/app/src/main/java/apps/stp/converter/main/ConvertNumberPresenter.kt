@@ -16,7 +16,7 @@ class ConvertNumberPresenter : ConvertNumberContract.Presenter {
     }
 
     override fun convertNumber(inputNumber: String, inputNumberSystem: String, resultNumberSystem: String) {
-        if (inputNumber.length <= 20) {
+        if (mConvertNumberModel.numberIsCorrect(inputNumber)) {
             try {
                 val resultNumber = mConvertNumberModel.convertNumber(inputNumber, inputNumberSystem, resultNumberSystem)
                 mView?.getConvertedNumber(resultNumber)
