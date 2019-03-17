@@ -14,6 +14,6 @@ interface ConvertNumberContract {
     }
 
     interface Presenter : BasePresenter<View> {
-        fun convertNumber(inputNumber: String, inputNumberSystem: String, resultNumberSystem: String)
+        fun convertNumber(inputNumber: String, inputNumberSystem: String, resultNumberSystem: String,  accuracy : String)
     }
 }

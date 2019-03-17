@@ -15,11 +15,18 @@ class ConvertNumberPresenter : ConvertNumberContract.Presenter {
         mView = null
     }
 
-    override fun convertNumber(inputNumber: String, inputNumberSystem: String, resultNumberSystem: String) {
+    override fun convertNumber(inputNumber: String, inputNumberSystem: String, resultNumberSystem: String, accuracy : String) {
         if (mConvertNumberModel.numberIsCorrect(inputNumber)) {
             try {
-                val resultNumber = mConvertNumberModel.convertNumber(inputNumber, inputNumberSystem, resultNumberSystem)
-                mView?.getConvertedNumber(resultNumber)
+                val resultNumber : String;
+                if(accuracy.isEmpty()) {
+                    resultNumber =
+                        mConvertNumberModel.convertNumber(inputNumber, inputNumberSystem, resultNumberSystem)
+                } else {
+                    resultNumber =
+                        mConvertNumberModel.convertNumber(inputNumber, inputNumberSystem, resultNumberSystem, accuracy)
+                }
+                    mView?.getConvertedNumber(resultNumber)
                 mView?.addNewAdapterItem(HistoryItem(inputNumber, resultNumber, inputNumberSystem, resultNumberSystem))
             } catch (exception: Exception) {
                 mView?.showErrorMessage()

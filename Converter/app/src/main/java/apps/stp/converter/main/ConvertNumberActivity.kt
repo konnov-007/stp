@@ -45,7 +45,7 @@ class ConvertNumberActivity : AppCompatActivity(), ConvertNumberContract.View {
         buttonConvert.setOnClickListener {
             mPresenter.convertNumber(editTextInputNumber.text.toString(),
                     spinnerInputNumber.selectedItem.toString(),
-                    spinnerResultNumber.selectedItem.toString())
+                    spinnerResultNumber.selectedItem.toString(), accuracyEditText.text.toString())
         }
     }
 
