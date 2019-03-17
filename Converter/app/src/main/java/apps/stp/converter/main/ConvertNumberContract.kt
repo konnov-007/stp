@@ -8,9 +8,9 @@ interface ConvertNumberContract {
     interface View : BaseView<Presenter> {
         fun initUI()
         fun showErrorMessage()
-        fun openAboutDialog()
         fun getConvertedNumber(result: String)
         fun addNewAdapterItem(item: HistoryItem)
+        fun showAlertDialog(title: String, message: String)
     }
 
     interface Presenter : BasePresenter<View> {
