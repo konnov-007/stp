@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.ConvertNumberActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputNumberLayout"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextInputNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789ABCDEF.-"
+            android:hint="Исходное число"
+            android:inputType="textCapCharacters"
+            android:longClickable="false"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerInputNumber"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:entries="@array/number_system_list"
+        app:layout_constraintLeft_toRightOf="@id/inputNumberLayout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/resultNumberLayout"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputNumberLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextResultNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="false"
+            android:hint="Итоговое число"
+            android:inputType="none"
+            android:longClickable="false"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerResultNumber"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:entries="@array/number_system_list"
+        app:layout_constraintLeft_toRightOf="@id/resultNumberLayout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerInputNumber" />
+
+    <Button
+        android:id="@+id/buttonConvert"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:text="Сконвертировать число"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resultNumberLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/accuracyLayout"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintLeft_toRightOf="@id/buttonConvert"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerResultNumber">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/accuracyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Точность"
+            android:inputType="number"
+            android:longClickable="false"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="История операций:"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonConvert" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        tools:listitem="@layout/history_item" />
+</androidx.constraintlayout.widget.ConstraintLayout>

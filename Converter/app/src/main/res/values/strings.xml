@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Конвертер</string>
+    <string name="dialog_button">OK</string>
+    <string name="dialog_about_app_title">Справка</string>
+    <string name="dialog_about_app_message">Конвертер - приложение для преобразования действительных чисел, представленных в системе счисления с основанием p1, в действительные числа, представленные в системе счисления с основанием p2.</string>
+    <string name="dialog_about_developers_title">Об авторах</string>
+    <string name="dialog_about_developers_message">Приложение разработали студенты группы ИП-512: \n\n1. Коннов Илья \n\n2. Пономаренко Илья</string>
+    <string name="error_message">Ошибка! Введите корректные данные!</string>
+
+    <string-array name="number_system_list">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+</resources>
