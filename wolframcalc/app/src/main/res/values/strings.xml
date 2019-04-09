@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WolframCalc</string>
+    <string name="input_hint">Input query</string>
+    <string name="calc_btn_text">Calculate</string>
 </resources>
