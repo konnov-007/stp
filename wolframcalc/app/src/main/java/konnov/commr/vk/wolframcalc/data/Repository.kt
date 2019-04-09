@@ -5,6 +5,8 @@ import konnov.commr.vk.wolframcalc.data.network.RemoteDataSource
 
 object Repository : DataSource {
 
+    val cachedHistory : ArrayList<ResultPod> = ArrayList()
+
     lateinit var source: DataSource
 
     fun initRepo(dataSource: DataSource) {
@@ -12,6 +14,7 @@ object Repository : DataSource {
     }
 
     override fun onPodsLoaded(pods: ArrayList<ResultPod>) {
+        cachedHistory.addAll(pods)
         source.onPodsLoaded(pods)
     }
 

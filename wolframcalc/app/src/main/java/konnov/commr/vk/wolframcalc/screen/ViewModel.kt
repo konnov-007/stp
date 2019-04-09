@@ -19,12 +19,6 @@ class ViewModel (app: Application) : AndroidViewModel(app), DataSource {
     val mRepository = Repository
 
     val mLiveData = MutableLiveData<ViewState>()
-    get() {
-        if (field.value == null) {
-            field.value = ViewStateEmpty("Ошибка")
-        }
-        return field
-    }
 
     fun loadData(query : String?) {
         if(query!!.isEmpty()) {

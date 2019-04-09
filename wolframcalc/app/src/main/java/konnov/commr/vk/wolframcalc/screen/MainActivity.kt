@@ -1,7 +1,10 @@
 package konnov.commr.vk.wolframcalc.screen
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setSupportActionBar(toolbar)
 
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView.setHasFixedSize(true)
@@ -54,6 +59,16 @@ class MainActivity : AppCompatActivity() {
     private fun showResult(resultPods: ArrayList<ResultPod>) {
         resultPodAdapter = ResultPodAdapter(resultPods)
         recyclerView.adapter = resultPodAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        startActivity(Intent(this, HistoryActivity::class.java))
+        return true
     }
 
 }
