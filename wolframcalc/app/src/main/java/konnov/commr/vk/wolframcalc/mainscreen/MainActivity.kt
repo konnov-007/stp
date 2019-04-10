@@ -1,4 +1,4 @@
-package konnov.commr.vk.wolframcalc.screen
+package konnov.commr.vk.wolframcalc.mainscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,13 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import konnov.commr.vk.wolframcalc.R
+import konnov.commr.vk.wolframcalc.activityscreen.HistoryActivity
 import konnov.commr.vk.wolframcalc.data.ResultPod
+import konnov.commr.vk.wolframcalc.util.obtainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mViewModel : ViewModel
+    private lateinit var mMainViewModel : MainViewModel
 
     private lateinit var resultPodAdapter: ResultPodAdapter
     private lateinit var recyclerView: RecyclerView
@@ -34,11 +36,11 @@ class MainActivity : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(this)
         recyclerView.setLayoutManager(linearLayoutManager)
 
-        mViewModel = createViewModel()
-        mViewModel.mLiveData.observe(this, Observer <ViewState> { response -> updateViewState(response) })
+        mMainViewModel = obtainViewModel()
+        mMainViewModel.mLiveData.observe(this, Observer <ViewState> { response -> updateViewState(response) })
 
         calculate_btn.setOnClickListener {
-            mViewModel.loadData(input_et.text.toString())
+            mMainViewModel.loadData(input_et.text.toString())
         }
     }
 
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun createViewModel() = ViewModelProviders.of(this).get(ViewModel::class.java)
+    private fun createViewModel() = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
     private fun showError(message : String?){
         Snackbar.make(findViewById(android.R.id.content), message!!, Snackbar.LENGTH_LONG).show()
@@ -71,4 +73,5 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    fun obtainViewModel(): MainViewModel = obtainViewModel(MainViewModel::class.java)
 }

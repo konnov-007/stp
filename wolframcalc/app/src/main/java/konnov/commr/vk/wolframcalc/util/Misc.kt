@@ -1,4 +1,4 @@
-package konnov.commr.vk.wolframcalc
+package konnov.commr.vk.wolframcalc.util
 
 import android.content.Context
 import android.graphics.Point
@@ -8,7 +8,7 @@ import android.view.WindowManager
 
 private var screenHeight = 0
 
-// Check network connectivity
+// Check remote connectivity
 fun isNetworkAvailable(context: Context): Boolean {
     val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val activeNetworkInfo = connectivityManager.activeNetworkInfo

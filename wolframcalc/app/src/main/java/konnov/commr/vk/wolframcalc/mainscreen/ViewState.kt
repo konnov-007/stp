@@ -1,4 +1,4 @@
-package konnov.commr.vk.wolframcalc.screen
+package konnov.commr.vk.wolframcalc.mainscreen
 
 import konnov.commr.vk.wolframcalc.data.ResultPod
 

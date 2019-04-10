@@ -1,4 +1,4 @@
-package konnov.commr.vk.wolframcalc.screen
+package konnov.commr.vk.wolframcalc.mainscreen
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import konnov.commr.vk.wolframcalc.R
 import konnov.commr.vk.wolframcalc.data.ResultPod
-import konnov.commr.vk.wolframcalc.getScreenHeight
+import konnov.commr.vk.wolframcalc.util.getScreenHeight
 
 class ResultPodAdapter(private val resultPods: List<ResultPod>) :
     RecyclerView.Adapter<ResultPodAdapter.ResultPodViewHolder>() {
@@ -37,21 +37,6 @@ class ResultPodAdapter(private val resultPods: List<ResultPod>) :
 
         resultPodViewHolder.textViewResultPodTitle.setText(resultPods[position].title)
         resultPodViewHolder.textViewResultPodDescription.setText(resultPods[position].description)
-
-        // Long tap/press to copy description
-        resultPodViewHolder.cardView.setOnLongClickListener(View.OnLongClickListener {
-            val clipboardManager = context!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clipData: ClipData
-
-            if (resultPods[position].description.isNotEmpty()) {
-                clipData = ClipData.newPlainText("AskMeAnything", resultPods[position].description)
-                clipboardManager.primaryClip = clipData
-                Toast.makeText(context, "Description copied to clipboard", Toast.LENGTH_LONG).show()
-            }
-
-            false
-        })
-
 
         // Set Animation
 

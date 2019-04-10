@@ -1,4 +1,4 @@
-package konnov.commr.vk.wolframcalc.data.network
+package konnov.commr.vk.wolframcalc.data.source.remote
 
 import konnov.commr.vk.wolframcalc.data.ResultPod
 import org.w3c.dom.Document
