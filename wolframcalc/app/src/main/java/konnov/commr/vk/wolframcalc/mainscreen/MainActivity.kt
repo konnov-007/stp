@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         mMainViewModel.mLiveData.observe(this, Observer <ViewState> { response -> updateViewState(response) })
 
         calculate_btn.setOnClickListener {
+            indeterminateBar.visibility = ProgressBar.VISIBLE
             mMainViewModel.loadData(input_et.text.toString())
         }
     }
@@ -55,10 +57,12 @@ class MainActivity : AppCompatActivity() {
     private fun createViewModel() = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
     private fun showError(message : String?){
+        indeterminateBar.visibility = ProgressBar.INVISIBLE
         Snackbar.make(findViewById(android.R.id.content), message!!, Snackbar.LENGTH_LONG).show()
     }
 
     private fun showResult(resultPods: ArrayList<ResultPod>) {
+        indeterminateBar.visibility = ProgressBar.INVISIBLE
         resultPodAdapter = ResultPodAdapter(resultPods)
         recyclerView.adapter = resultPodAdapter
     }
