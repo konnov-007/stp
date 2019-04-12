@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ProgressBar
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -23,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mMainViewModel : MainViewModel
 
     private lateinit var resultPodAdapter: ResultPodAdapter
+
     private lateinit var recyclerView: RecyclerView
 
 
@@ -54,8 +54,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun createViewModel() = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
     private fun showError(message : String?){
         indeterminateBar.visibility = ProgressBar.INVISIBLE
         Snackbar.make(findViewById(android.R.id.content), message!!, Snackbar.LENGTH_LONG).show()
@@ -77,5 +75,5 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun obtainViewModel(): MainViewModel = obtainViewModel(MainViewModel::class.java)
+    private fun obtainViewModel(): MainViewModel = obtainViewModel(MainViewModel::class.java)
 }
