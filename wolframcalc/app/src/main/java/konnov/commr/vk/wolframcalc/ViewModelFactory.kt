@@ -6,6 +6,7 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import konnov.commr.vk.wolframcalc.data.source.Repository
+import konnov.commr.vk.wolframcalc.historyscreen.HistoryViewModel
 import konnov.commr.vk.wolframcalc.mainscreen.MainViewModel
 
 class ViewModelFactory private constructor(
@@ -18,9 +19,10 @@ class ViewModelFactory private constructor(
             when {
                 isAssignableFrom(MainViewModel::class.java) ->
                     MainViewModel(repository)
-                //TODO add view model for history screen
+                isAssignableFrom(HistoryViewModel::class.java) ->
+                    HistoryViewModel(repository)
                 else ->
-                    throw IllegalArgumentException("Unknown MainViewModel class: ${modelClass.name}")
+                    throw IllegalArgumentException("Unknown class: ${modelClass.name}")
             }
         } as T
 

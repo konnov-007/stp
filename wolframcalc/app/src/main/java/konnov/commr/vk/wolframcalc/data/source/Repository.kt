@@ -21,7 +21,7 @@ class Repository(
     }
 
     override fun persistHistory(pods: List<ResultPod>) {
-        resultRemoteDataSource.persistHistory(pods)
+        historyLocalDataSource.persistHistory(pods)
     }
 
     override fun clearHistory() {
@@ -31,6 +31,7 @@ class Repository(
     override fun getQueryResult(query: String, callback: WolframDataSource.GetResultCallback) {
         resultRemoteDataSource.getQueryResult(query, object : WolframDataSource.GetResultCallback{
             override fun onPodsLoaded(pods: List<ResultPod>) {
+                persistHistory(pods)
                 callback.onPodsLoaded(pods)
             }
 

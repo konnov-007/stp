@@ -8,11 +8,13 @@ import android.view.MenuItem
 import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import konnov.commr.vk.wolframcalc.R
 import konnov.commr.vk.wolframcalc.historyscreen.HistoryActivity
 import konnov.commr.vk.wolframcalc.data.ResultPod
+import konnov.commr.vk.wolframcalc.util.ViewState
+import konnov.commr.vk.wolframcalc.util.ViewStateEmpty
+import konnov.commr.vk.wolframcalc.util.ViewStateSuccess
 import konnov.commr.vk.wolframcalc.util.obtainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
@@ -23,8 +25,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var resultPodAdapter: ResultPodAdapter
 
-    private lateinit var recyclerView: RecyclerView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-        recyclerView = findViewById(R.id.recycler_view)
-        recyclerView.setHasFixedSize(true)
+        main_screen_rv.setHasFixedSize(true)
         val linearLayoutManager = LinearLayoutManager(this)
-        recyclerView.setLayoutManager(linearLayoutManager)
+        main_screen_rv.setLayoutManager(linearLayoutManager)
 
         mMainViewModel = obtainViewModel()
         mMainViewModel.mLiveData.observe(this, Observer <ViewState> { response -> updateViewState(response) })
@@ -62,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     private fun showResult(resultPods: ArrayList<ResultPod>) {
         indeterminateBar.visibility = ProgressBar.INVISIBLE
         resultPodAdapter = ResultPodAdapter(resultPods)
-        recyclerView.adapter = resultPodAdapter
+        main_screen_rv.adapter = resultPodAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -49,7 +49,7 @@ class LocalDataSource private constructor(
         appExecutors.diskIO.execute {
             val history = historyDao.getHistory()
             appExecutors.mainThread.execute {
-                if(history.size == 0){
+                if(history.isEmpty()){
                     callback.onDataNotAvailable()
                 } else {
                     callback.onPodsLoaded(pods = history)

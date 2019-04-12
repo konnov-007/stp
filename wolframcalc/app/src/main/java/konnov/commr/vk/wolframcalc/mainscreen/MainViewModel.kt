@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import konnov.commr.vk.wolframcalc.data.source.Repository
 import konnov.commr.vk.wolframcalc.data.ResultPod
 import konnov.commr.vk.wolframcalc.data.source.WolframDataSource
+import konnov.commr.vk.wolframcalc.util.ViewState
+import konnov.commr.vk.wolframcalc.util.ViewStateEmpty
+import konnov.commr.vk.wolframcalc.util.ViewStateSuccess
 
 class MainViewModel(
     private val repository: Repository
