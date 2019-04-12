@@ -39,7 +39,7 @@ object RemoteWolframDataSource : WolframDataSource {
 
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
-                val result = ResultPodXmlParser.parseResultXml(response.body()!!.string(), url)
+                val result = ResultPodXmlParser.parseResultXml(response.body()!!.string())
                 callback.onPodsLoaded(result!!)
             }
         })

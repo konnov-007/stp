@@ -11,7 +11,7 @@ import java.util.ArrayList
 import javax.xml.parsers.DocumentBuilderFactory
 
 object ResultPodXmlParser {
-    fun parseResultXml(resultXml: String, query: String): ArrayList<ResultPod>? {
+    fun parseResultXml(resultXml: String): ArrayList<ResultPod>? {
 
         val resultPods = ArrayList<ResultPod>()
 

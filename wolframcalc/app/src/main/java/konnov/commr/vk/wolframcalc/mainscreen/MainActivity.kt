@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import konnov.commr.vk.wolframcalc.R
-import konnov.commr.vk.wolframcalc.activityscreen.HistoryActivity
+import konnov.commr.vk.wolframcalc.historyscreen.HistoryActivity
 import konnov.commr.vk.wolframcalc.data.ResultPod
 import konnov.commr.vk.wolframcalc.util.obtainViewModel
 import kotlinx.android.synthetic.main.activity_main.*

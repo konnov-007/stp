@@ -1,4 +1,4 @@
-package konnov.commr.vk.wolframcalc.activityscreen
+package konnov.commr.vk.wolframcalc.historyscreen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

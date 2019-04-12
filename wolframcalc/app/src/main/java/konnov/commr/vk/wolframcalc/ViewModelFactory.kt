@@ -12,6 +12,7 @@ class ViewModelFactory private constructor(
         private val repository : Repository
 ) : ViewModelProvider.NewInstanceFactory() {
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>) =
         with(modelClass) {
             when {

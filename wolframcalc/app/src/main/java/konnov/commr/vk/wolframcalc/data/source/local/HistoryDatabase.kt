@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import konnov.commr.vk.wolframcalc.data.ResultPod
 
-@Database(entities = arrayOf(ResultPod::class), version = 1)
+@Database(entities = arrayOf(ResultPod::class), version = 1, exportSchema = false)
 abstract class HistoryDatabase : RoomDatabase() {
 
     abstract fun historyDao(): HistoryDao
