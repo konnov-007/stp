@@ -40,7 +40,11 @@ object RemoteWolframDataSource : WolframDataSource {
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
                 val result = ResultPodXmlParser.parseResultXml(response.body()!!.string())
-                callback.onPodsLoaded(result!!)
+                if(result == null) {
+                    callback.onDataNotAvailable()
+                    return
+                }
+                callback.onPodsLoaded(result)
             }
         })
         return null
