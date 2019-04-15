@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(main_toolbar)
 
         main_screen_rv.setHasFixedSize(true)
         val linearLayoutManager = LinearLayoutManager(this)

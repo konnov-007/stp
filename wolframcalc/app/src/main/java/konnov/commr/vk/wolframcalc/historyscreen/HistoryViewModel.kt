@@ -25,5 +25,10 @@ class HistoryViewModel (private val repository: Repository) : ViewModel(){
         })
     }
 
+    fun clearHistory(){
+        repository.clearHistory()
+        mLiveData.value  = ViewStateEmpty("Пусто")
+    }
+
 
 }
