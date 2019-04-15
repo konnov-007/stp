@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateViewState(state: ViewState) {
         when (state) {
             is ViewStateSuccess -> showResult(state.result!!)
-            is ViewStateEmpty -> showError(state.message)
+            is ViewStateEmpty -> showError(resources.getString(state.message))
         }
     }
 

@@ -28,7 +28,7 @@
                 android:layout_below="@+id/text_result_pod_title"
                 android:layout_margin="7dp"
                 android:textColor="@color/black"
-                android:text="Description"
+                android:text=""
                 android:textSize="18sp" />
 
     </RelativeLayout>

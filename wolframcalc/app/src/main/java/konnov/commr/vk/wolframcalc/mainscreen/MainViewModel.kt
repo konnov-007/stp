@@ -2,6 +2,7 @@ package konnov.commr.vk.wolframcalc.mainscreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import konnov.commr.vk.wolframcalc.R
 import konnov.commr.vk.wolframcalc.data.source.Repository
 import konnov.commr.vk.wolframcalc.data.ResultPod
 import konnov.commr.vk.wolframcalc.data.source.WolframDataSource
@@ -17,7 +18,7 @@ class MainViewModel(
 
     fun loadData(query : String?) {
         if(query!!.isEmpty()) {
-            mLiveData.value = ViewStateEmpty("Введите текст")
+            mLiveData.value = ViewStateEmpty(R.string.input_text)
         } else {
             repository.getQueryResult(query, object : WolframDataSource.GetResultCallback{
                 override fun onPodsLoaded(pods: List<ResultPod>) {
@@ -25,7 +26,7 @@ class MainViewModel(
                 }
 
                 override fun onDataNotAvailable() {
-                    mLiveData.postValue(ViewStateEmpty("Ошибка"))
+                    mLiveData.postValue(ViewStateEmpty(R.string.error))
                 }
             })
         }

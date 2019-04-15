@@ -3,8 +3,8 @@ package konnov.commr.vk.wolframcalc.data.source
 import konnov.commr.vk.wolframcalc.data.ResultPod
 
 class Repository(
-     val resultRemoteDataSource: WolframDataSource,
-     val historyLocalDataSource: WolframDataSource
+     private val resultRemoteDataSource: WolframDataSource,
+     private val historyLocalDataSource: WolframDataSource
 ) : WolframDataSource {
 
     override fun getHistory(callback: WolframDataSource.GetResultCallback) {

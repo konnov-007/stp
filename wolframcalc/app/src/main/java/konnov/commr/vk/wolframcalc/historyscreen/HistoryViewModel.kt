@@ -2,6 +2,7 @@ package konnov.commr.vk.wolframcalc.historyscreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import konnov.commr.vk.wolframcalc.R
 import konnov.commr.vk.wolframcalc.data.ResultPod
 import konnov.commr.vk.wolframcalc.data.source.Repository
 import konnov.commr.vk.wolframcalc.data.source.WolframDataSource
@@ -20,14 +21,14 @@ class HistoryViewModel (private val repository: Repository) : ViewModel(){
             }
 
             override fun onDataNotAvailable() {
-                mLiveData.value  = ViewStateEmpty("Ошибка")
+                mLiveData.value  = ViewStateEmpty(R.string.error)
             }
         })
     }
 
     fun clearHistory(){
         repository.clearHistory()
-        mLiveData.value  = ViewStateEmpty("Пусто")
+        mLiveData.value  = ViewStateEmpty(R.string.empty)
     }
 
 

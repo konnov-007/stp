@@ -27,7 +27,7 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
 
-        history_toolbar.title = "История"
+        history_toolbar.title = resources.getString(R.string.history)
         setSupportActionBar(history_toolbar)
         if(supportActionBar != null) {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
