@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun showError(message : String?){
         indeterminateBar.visibility = ProgressBar.INVISIBLE
+        calculate_btn.isEnabled = true
+        calculate_btn.alpha = 1f
         Snackbar.make(findViewById(android.R.id.content), message!!, Snackbar.LENGTH_LONG).show()
     }
 
