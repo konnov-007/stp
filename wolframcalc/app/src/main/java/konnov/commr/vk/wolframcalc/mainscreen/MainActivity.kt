@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         calculate_btn.setOnClickListener {
             indeterminateBar.visibility = ProgressBar.VISIBLE
+            calculate_btn.isEnabled = false
+            calculate_btn.alpha = 0.5f
+
             mMainViewModel.loadData(input_et.text.toString())
         }
     }
@@ -60,6 +63,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun showResult(resultPods: ArrayList<ResultPod>) {
         indeterminateBar.visibility = ProgressBar.INVISIBLE
+        calculate_btn.isEnabled = true
+        calculate_btn.alpha = 1f
+
         resultPodAdapter = ResultPodAdapter(resultPods)
         main_screen_rv.adapter = resultPodAdapter
     }
